@@ -1,0 +1,10 @@
+body {
+  display: grid;
+  place-items: center;
+  background-color: #b4a7d6;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  color: #8873be;
+}
