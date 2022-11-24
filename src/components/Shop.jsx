@@ -40,7 +40,7 @@ const Shop = () => {
   }, []);
   console.log(products);
   return (
-    <div className="grid grid-cols-3 gap-20 gap-y-24 bg-oasis h-full  p-28 items-center border-2 border-black">
+    <div className="grid grid-cols-3 gap-20 gap-y-24 bg-oasis h-full  p-28 items-center ">
       {products.map((product) => {
         return (
           <div className="flex flex-col border-b-4 border-black p-5">
