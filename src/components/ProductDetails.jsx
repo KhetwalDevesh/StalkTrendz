@@ -8,11 +8,17 @@ import '../css/index.css';
 // import '../fonts/ClashDisplay-Regular.woff2';
 import '../css/main.css';
 import useStore from '../store';
+import { Link } from 'react-router-dom';
 const ProductDetails = () => {
-  const { cartItems } = useStore();
+  const { cartItems, addItemToCart, removeItemFromCart } = useStore();
   const [productDetail, setProductDetail] = useState();
   const params = useParams();
   console.log(params.id);
+  // const addItemToCart = useStore((state) => state.addItemToCart);
+  const addItemToCartLocal = () => {
+    addItemToCart({ item: productDetail });
+  };
+
   useEffect(() => {
     const getProductDetails = async () => {
       try {
@@ -46,11 +52,24 @@ const ProductDetails = () => {
           <div className="flex space-x-10">
             <span className=" text-2xl">Rs.{productDetail.price}</span>
             <span>
-              <button>-</button>
-              <button>+</button>
+              <button className="w-6 bg-slate-700 text-white rounded-full">
+                -
+              </button>
+              <span className="p-3 m-1 bg-indigo-900 text-white rounded-full">
+                Quantity
+              </span>
+              <button
+                // onClick={increaseQuantity}
+                className="w-6 bg-slate-700 text-white rounded-full"
+              >
+                +
+              </button>
             </span>
           </div>
-          <button className="w-48 h-16 border-2  bg-black text-white rounded-full">
+          <button
+            onClick={addItemToCartLocal}
+            className="w-48 h-16 border-2  bg-black text-white rounded-full"
+          >
             Add to Cart
           </button>
         </div>

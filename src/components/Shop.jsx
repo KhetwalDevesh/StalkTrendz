@@ -43,7 +43,10 @@ const Shop = () => {
     <div className="grid grid-cols-3 gap-20 gap-y-24 bg-oasis h-full  p-28 items-center ">
       {products.map((product) => {
         return (
-          <div className="flex flex-col border-b-4 border-black p-5">
+          <div
+            key={product._id}
+            className="flex flex-col border-b-4 border-black p-5"
+          >
             <Link to={`/product/${product._id}`}>
               <img
                 className="h-96 w-80 border-4 border-black "

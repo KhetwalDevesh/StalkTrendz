@@ -1,10 +1,11 @@
-import { create } from 'zustand';
+import create from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
-const useStore = (set, get) => ({
+let useStore = (set, get) => ({
   totalItemsInCart: 0,
   cartItems: [],
-  addItemToCart: set((state) => (item) => {
-    const totalItemsInCart = state.totalItemsInCart + 1;
+  addItemToCart: ({ item }) => {
+    // const totalItemsInCart = get().totalItemsInCart + 1;
+    console.log(item);
     const newCartItem = {
       _id: item._id,
       name: item.name,
@@ -12,16 +13,25 @@ const useStore = (set, get) => ({
       price: item.price,
       image: item.image,
       countInStock: item.countInStock,
-      currentQuantity: 1,
+      quantity: 1,
     };
-    const isItemInCart = state.cartItems.find(
+    const isItemInCart = get().cartItems.find(
       (cartItem) => cartItem._id === item._id
     );
 
     if (isItemInCart) {
-      const updatedCartItems = state.cartItems.map((cartItem) => {
+      const updatedCartItems = get().cartItems.map((cartItem) => {
         if (cartItem._id === item._id) {
-          cartItem.quantity += 1;
+          const currentCartItem = {
+            _id: cartItem._id,
+            name: cartItem.name,
+            brand: cartItem.brand,
+            price: cartItem.price,
+            image: cartItem.image,
+            countInStock: cartItem.countInStock,
+            quantity: cartItem.quantity + 1,
+          };
+          return currentCartItem;
         }
         return cartItem;
       });
@@ -31,14 +41,30 @@ const useStore = (set, get) => ({
     }
     // set((state)=>{state.cartItems:[...state.cartItems,newCartItem]})
     else {
-      const updatedCartItems = [...state.cartItems, newCartItem];
+      const itemsInCart = get().cartItems;
+      console.log(itemsInCart, 'itemsInCart👍👍');
+
+      const updatedCartItems = [...itemsInCart, newCartItem];
+      console.log(updatedCartItems, 'updatedCartItems😒');
+      console.log(newCartItem, 'newCartItem🙌');
       set({
         cartItems: updatedCartItems,
       });
     }
-  }),
+  },
+  removeItemFromCart: ({ itemId }) => {
+    const updatedCart = get().cartItems.map((cartItem) => {
+      if (cartItem._id !== itemId) return cartItem;
+    });
+    console.log(updatedCart, 'updatedCart');
+    const updatedCartItems = updatedCart.filter((item) => {
+      return item !== undefined;
+    });
+    set({ cartItems: updatedCartItems });
+    console.log(updatedCartItems, '😎');
+  },
 });
 // console.log(state.cartItems);
-// useStore = persist(useStore);
+useStore = persist(useStore, { name: 'productStorage' });
 useStore = create(useStore);
 export default useStore;
