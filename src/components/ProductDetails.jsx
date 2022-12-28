@@ -51,24 +51,10 @@ const ProductDetails = () => {
           </div>
           <div className="flex space-x-10">
             <span className=" text-2xl">Rs.{productDetail.price}</span>
-            <span>
-              <button className="w-6 bg-slate-700 text-white rounded-full">
-                -
-              </button>
-              <span className="p-3 m-1 bg-indigo-900 text-white rounded-full">
-                Quantity
-              </span>
-              <button
-                // onClick={increaseQuantity}
-                className="w-6 bg-slate-700 text-white rounded-full"
-              >
-                +
-              </button>
-            </span>
           </div>
           <button
             onClick={addItemToCartLocal}
-            className="w-48 h-16 border-2  bg-black text-white rounded-full"
+            className="w-60 h-16 border-2  bg-black text-white text-lg rounded-full"
           >
             Add to Cart
           </button>

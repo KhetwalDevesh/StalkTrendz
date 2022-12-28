@@ -57,7 +57,7 @@ const Shop = () => {
             <br />
             <span>{product.name}</span>
             <span>{product.brand}</span>
-            <span>{product.price}</span>
+            <span>₹{product.price}</span>
           </div>
         );
       })}

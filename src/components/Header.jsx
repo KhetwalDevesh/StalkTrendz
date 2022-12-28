@@ -26,7 +26,7 @@ const Header = () => {
       <div className=" flex space-x-20  text-xl uppercase">
         <span>Contact</span>
         <Link to="/cart">
-          <span>Cart{cartQuantity}</span>
+          <span>Cart ({cartQuantity})</span>
         </Link>
       </div>
     </div>
