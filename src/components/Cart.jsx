@@ -53,7 +53,7 @@ const Cart = () => {
                   </button>
                 </span>
                 <div className=" justify-center items-center flex">
-                  ₹{item.price}
+                  ₹{item.quantity*item.price}
                 </div>
 
                 {/* <div className="border-2 border-black h-10 w-8"> */}
