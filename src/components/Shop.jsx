@@ -7,11 +7,14 @@ export const baseURL = 'https://innocenti.onrender.com/products';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     async function fetchProducts() {
       try {
         console.log('inside useEffect');
+        setLoading(true);
         const res = await axios.get(baseURL);
+        setLoading(false);
         const productsData = [...res.data];
         //console.log(productsData);
         // setProducts(productsData);
@@ -40,7 +43,10 @@ const Shop = () => {
   }, []);
   console.log(products);
   return (
-    <div className="grid grid-cols-3 gap-20 gap-y-24 bg-oasis h-full  p-28 items-center ">
+      <div className="grid grid-cols-3 gap-20 gap-y-24 bg-oasis h-full  p-28 items-center ">
+      {loading ? <div className=" text-3xl">Loading...</div> :
+      <>
+      </>}
       {products.map((product) => {
         return (
           <div
