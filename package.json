@@ -1,27 +1,19 @@
 {
-  "name": "stalktrendz",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "StalkTrendz",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/KhetwalDevesh/StalkTrendz.git",
+  "author": "KhetwalDevesh <deveshkhetwal05@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "nodemon backend/server.js"
   },
   "dependencies": {
-    "axios": "^1.1.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3",
-    "zustand": "^4.1.4"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.22",
-    "@types/react-dom": "^18.0.7",
-    "@vitejs/plugin-react": "^2.2.0",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.1",
-    "vite": "^3.2.0"
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.3",
+    "nodemon": "^2.0.20"
   }
 }

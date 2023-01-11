@@ -43,8 +43,8 @@ const Shop = () => {
   }, []);
   console.log(products);
   return (
-      <div className="grid grid-cols-3 gap-20 gap-y-24 bg-oasis h-full  p-28 items-center ">
-      {loading ? <div className=" text-3xl">Loading...</div> :
+      <div className="grid grid-cols-3 gap-20 gap-y-24 bg-oasis min-h-screen  p-28 items-center overflow-x-hidden">
+      {loading ? <div className=" text-3xl flex justify-center items-center w-screen">Loading...</div> :
       <>
       </>}
       {products.map((product) => {
